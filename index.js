@@ -4,7 +4,7 @@ const io = require('socket.io')(http);
 const ip = require('ip').address()
 
 app.get('/', (req, res) => {
-    res.send('hai');
+    res.sendFile('index.html');
 });
 
 io.on('connection', (socket) => {
