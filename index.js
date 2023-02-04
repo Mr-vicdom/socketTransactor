@@ -2,6 +2,7 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const ip = require('ip').address()
+const process = require('progress');
 
 app.get('/', (req, res) => {
     res.sendFile('index.html');
@@ -15,6 +16,6 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(3000, function () {
+http.listen(process.env.PORT || 8080, function () {
     console.log(`listening on ${ip}:3000`);
 });
